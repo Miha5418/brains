@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.6.0'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+group 'ru.karpeikin.fitnes'
+version '0.0.1'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+ext {
+    set('snippetsDir', file("build/generated-snippets"))
+    set('mapstructVersion', "1.4.2.Final")
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    compileOnly "org.springframework.boot:spring-boot-starter-web"
+    compileOnly "org.springframework.data:spring-data-commons:"
+    compileOnly "javax.xml.bind:jaxb-api:2.3.1"
+    compileOnly "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    compileOnly "com.fasterxml.jackson.core:jackson-databind"
+    compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    compile project(":service-stub")
+
+    testCompileOnly 'org.projectlombok:lombok'
+
+}
+
+test {
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+}
+
+compileJava {
+    options.compilerArgs = [
+            '-Amapstruct.defaultComponentModel=spring'
+    ]
+}

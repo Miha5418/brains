@@ -1,0 +1,4 @@
+rootProject.name = 'brains'
+include 'service-stub'
+include 'service'
+
