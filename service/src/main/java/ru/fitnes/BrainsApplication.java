@@ -1,4 +1,4 @@
-package fitnes;
+package ru.fitnes;
 
 
 import org.springframework.boot.SpringApplication;

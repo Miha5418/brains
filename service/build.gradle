@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
-group 'ru.karpeikin.fitnes'
+group 'ru.karpeikin.ru.fitnes'
 version '0.0.1'
 sourceCompatibility = '11'
 
@@ -26,20 +26,26 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    compileOnly "org.springframework.boot:spring-boot-starter-web"
-    compileOnly "org.springframework.data:spring-data-commons:"
-    compileOnly "javax.xml.bind:jaxb-api:2.3.1"
-    compileOnly "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-    compileOnly "com.fasterxml.jackson.core:jackson-databind"
-    compileOnly "org.mapstruct:mapstruct:${mapstructVersion}"
-    compileOnly 'org.projectlombok:lombok'
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.data:spring-data-commons:"
+    implementation "javax.xml.bind:jaxb-api:2.3.1"
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    implementation "org.postgresql:postgresql"
+    implementation 'org.liquibase:liquibase-core:4.3.5'
 
     compile project(":service-stub")
 
     testCompileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+
+
 
 }
 

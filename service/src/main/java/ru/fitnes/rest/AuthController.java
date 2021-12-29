@@ -1,4 +1,4 @@
-package fitnes.rest;
+package ru.fitnes.rest;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

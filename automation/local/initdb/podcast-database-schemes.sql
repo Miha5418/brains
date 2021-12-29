@@ -1,0 +1,5 @@
+
+CREATE USER brain WITH PASSWORD 'brain';
+CREATE SCHEMA IF NOT EXISTS brain;
+ALTER SCHEMA brain OWNER TO brain;
+
